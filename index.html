@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Seberapa Sayang Dia | Creator Tegar Wiguna</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ec4899',
+                        sekunder: '#f472b6',
+                        lembut: '#fce7f3',
+                        netral: '#374151',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .bg-gradient-cinta {
+                background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            }
+            .card-shadow {
+                box-shadow: 0 10px 40px rgba(236, 72, 153, 0.25);
+            }
+            .btn-gradient {
+                background: linear-gradient(90deg, #ec4899 0%, #f472b6 100%);
+                transition: all 0.3s ease;
+            }
+            .btn-gradient:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(236, 72, 153, 0.35);
+            }
+            .logo-tw {
+                background: linear-gradient(135deg, #ec4899, #f472b6);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            .pilihan {
+                @apply w-full p-3 mb-3 rounded-xl border border-pink-200 bg-white text-left cursor-pointer transition-all hover:bg-pink-50 hover:border-primary;
+            }
+            .pilihan.terpilih {
+                @apply bg-pink-100 border-primary font-medium;
+            }
+            .slogan {
+                letter-spacing: 1px;
+            }
+        }
+    </style>
+
+    <!-- Meta Tag Berbagi -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Kalkulator Seberapa Sayang Dia | Creator Tegar Wiguna">
+    <meta property="og:description" content="Cek seberapa besar rasa sayang dia padamu lewat pertanyaan sederhana ini!">
+    <meta property="og:image" content="https://i.imgur.com/8Z7XQfL.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="min-h-screen bg-gradient-cinta flex flex-col items-center justify-center p-4 font-sans">
+    
+    <div class="w-full max-w-xl">
+        <!-- Header dengan Logo & Slogan -->
+        <div class="text-center mb-6 text-white">
+            <div class="flex items-center justify-center gap-3 mb-3">
+                <div class="bg-white p-2 rounded-full shadow-lg">
+                    <span class="text-2xl font-extrabold logo-tw">TW</span>
+                </div>
+            </div>
+            <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-2 flex items-center justify-center gap-2">
+                <i class="fa fa-heart"></i> Seberapa Sayang Dia?
+            </h1>
+            <p class="text-pink-100 slogan text-sm font-medium mb-1">"THE POWER OF CALCULATOR"</p>
+            <p class="text-pink-100">Jawab pertanyaan jujur, lihat hasilnya 💌</p>
+        </div>
+
+        <!-- Konten Utama -->
+        <div class="bg-white rounded-2xl p-6 md:p-8 card-shadow">
+            <!-- Bagian Pertanyaan -->
+            <div id="bagianPertanyaan">
+                <div class="mb-6 p-4 bg-lembut rounded-xl">
+                    <h3 class="font-semibold text-primary mb-2">📝 Cara Main:</h3>
+                    <p class="text-sm text-netral">Pilihlah jawaban yang paling sesuai dengan apa yang benar-benar dia lakukan kepadamu ya!</p>
+                </div>
+
+                <div class="space-y-4 mb-6">
+                    <!-- Pertanyaan 1 -->
+                    <div class="pertanyaan">
+                        <p class="font-medium text-netral mb-2">1. Saat kamu sedang sedih atau kesusahan, apa yang dia lakukan?</p>
+                        <div class="pilihan" onclick="pilihJawaban(this, 1, 20)">Mencari cara menghibur dan membantu sebisa dia</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 1, 15)">Mendengarkan curhatanmu dengan sabar</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 1, 10)">Hanya bilang "semangat ya" lalu pergi</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 1, 5)">Bahkan tidak tahu kalau kamu sedang sedih</div>
+                    </div>
+
+                    <!-- Pertanyaan 2 -->
+                    <div class="pertanyaan">
+                        <p class="font-medium text-netral mb-2">2. Apakah dia ingat hal-hal kecil yang pernah kamu ceritakan?</p>
+                        <div class="pilihan" onclick="pilihJawaban(this, 2, 20)">Sangat ingat, bahkan sering mengingatkannya kembali</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 2, 15)">Ingat hal-hal yang penting saja</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 2, 10)">Sering lupa dan tanya ulang</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 2, 5)">Sama sekali tidak ingat</div>
+                    </div>
+
+                    <!-- Pertanyaan 3 -->
+                    <div class="pertanyaan">
+                        <p class="font-medium text-netral mb-2">3. Seberapa sering dia menghubungimu atau menanyakan kabar duluan?</p>
+                        <div class="pilihan" onclick="pilihJawaban(this, 3, 20)">Sering, bahkan kalau sedang sibuk pun memberi kabar</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 3, 15)">Cukup sering, tapi kadang kamu yang mulai duluan</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 3, 10)">Hanya menghubungi kalau ada perlu saja</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 3, 5)">Hampir tidak pernah menghubungi duluan</div>
+                    </div>
+
+                    <!-- Pertanyaan 4 -->
+                    <div class="pertanyaan">
+                        <p class="font-medium text-netral mb-2">4. Bagaimana sikapnya saat kamu berdua berbeda pendapat?</p>
+                        <div class="pilihan" onclick="pilihJawaban(this, 4, 20)">Mencari jalan tengah dan tidak ingin berantem berlarut</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 4, 15)">Mendengarkan argumenmu dulu baru bicara</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 4, 10)">Ingin menang sendiri dan tidak mau mengalah</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 4, 5)">Marah dan pergi begitu saja</div>
+                    </div>
+
+                    <!-- Pertanyaan 5 -->
+                    <div class="pertanyaan">
+                        <p class="font-medium text-netral mb-2">5. Apakah dia berusaha meluangkan waktu khusus untukmu?</p>
+                        <div class="pilihan" onclick="pilihJawaban(this, 5, 20)">Tentu saja, kamu adalah prioritasnya</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 5, 15)">Berusaha meluangkan waktu kalau ada kesempatan</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 5, 10)">Sering bilang sibuk dan susah ditemui</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 5, 5)">Sama sekali tidak pernah meluangkan waktu</div>
+                    </div>
+
+                    <!-- Pertanyaan 6 -->
+                    <div class="pertanyaan">
+                        <p class="font-medium text-netral mb-2">6. Apakah dia bangga memperkenalkanmu kepada orang terdekatnya?</p>
+                        <div class="pilihan" onclick="pilihJawaban(this, 6, 20)">Sangat bangga dan senang memperkenalkanmu</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 6, 15)">Sudah memperkenalkan sebagian orang</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 6, 10)">Masih menunda-nunda tanpa alasan jelas</div>
+                        <div class="pilihan" onclick="pilihJawaban(this, 6, 5)">Sama sekali tidak mau memperkenalkan</div>
+                    </div>
+                </div>
+
+                <button id="cekBtn" class="btn-gradient w-full py-3 px-6 text-white font-semibold rounded-xl text-lg" onclick="cekHasil()">
+                    <i class="fa fa-heart mr-2"></i> Lihat Hasilnya
+                </button>
+            </div>
+
+            <!-- Bagian Hasil -->
+            <div id="bagianHasil" class="hidden mt-8">
+                <div class="border-t border-pink-100 pt-6 text-center">
+                    <h3 class="text-xl font-semibold text-netral mb-4">💖 Hasil Perhitungan</h3>
+                    <div id="persenHasil" class="text-5xl font-bold text-primary mb-4">0%</div>
+                    <div id="pesanHasil" class="p-4 rounded-xl mb-6 text-sm"></div>
+                    
+                    <button class="btn-gradient w-full py-3 px-6 text-white font-semibold rounded-xl mb-4" onclick="ulangiTes()">
+                        <i class="fa fa-refresh mr-2"></i> Coba Lagi
+                    </button>
+                </div>
+
+                <!-- Tombol Bagikan WhatsApp -->
+                <div class="flex gap-2 justify-center mt-6 mb-4">
+                    <a href="https://api.whatsapp.com/send?text=Cek%20seberapa%20sayang%20dia%20padamu%20di:%20https://tegarwiguna18-gif.github.io/Kalkulator-Sayang-Dia/" target="_blank" rel="noopener noreferrer" class="bg-green-600 hover:bg-green-700 text-white font-medium px-6 py-3 rounded-xl shadow-md transition-all">
+                        <i class="fa fa-whatsapp mr-2"></i>Bagikan ke Teman
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer dengan Nama Creator & Slogan -->
+        <div class="text-center mt-6 text-white/90 text-sm space-y-1">
+            <p class="font-medium">"THE POWER OF CALCULATOR"</p>
+            <p>Dibuat oleh: Creator Tegar Wiguna</p>
+            <p>© 2026 Kalkulator Seberapa Sayang Dia | Semua Hak Dilindungi</p>
+            <p class="text-xs opacity-75 mt-1">*Hasil ini hanya hiburan dan referensi, sesuaikan dengan hati nuranimu ya</p>
+        </div>
+    </div>
+
+    <script>
+        let totalSkor = 0;
+        let jawabanTerpilih = {};
+
+        // Fungsi pilih jawaban
+        function pilihJawaban(elemen, nomor, skor) {
+            // Hapus tanda terpilih di pertanyaan yang sama
+            const induk = elemen.parentElement;
+            const pilihanSemua = induk.querySelectorAll('.pilihan');
+            pilihanSemua.forEach(p => p.classList.remove('terpilih'));
+
+            // Tambah tanda terpilih pada yang diklik
+            elemen.classList.add('terpilih');
+            jawabanTerpilih[nomor] = skor;
+        }
+
+        // Fungsi cek hasil
+        function cekHasil() {
+            // Cek semua pertanyaan sudah dijawab
+            if (Object.keys(jawabanTerpilih).length < 6) {
+                alert('Jawab dulu semua pertanyaan ya!');
+                return;
+            }
+
+            // Hitung total skor
+            totalSkor = 0;
+            for (let skor of Object.values(jawabanTerpilih)) {
+                totalSkor += skor;
+            }
+
+            // Tampilkan hasil
+            bagianPertanyaan.classList.add('hidden');
+            bagianHasil.classList.remove('hidden');
+            persenHasil.textContent = totalSkor + '%';
+
+            // Tentukan pesan
+            let pesan = '';
+            let warna = '';
+            if (totalSkor >= 90) {
+                pesan = '🥰 Wah luar biasa! Dia sangat sangat menyayangimu. Kamu adalah orang yang paling berharga di hidupnya. Pertahankan dan saling menyayangi terus ya!';
+                warna = 'bg-green-50 text-green-800';
+            } else if (totalSkor >= 70) {
+                pesan = '💖 Dia benar-benar menyayangimu! Mungkin tidak selalu sempurna, tapi usahanya membuktikan kamu sangat berarti baginya. Bicarakan baik-baik kalau ada hal yang kurang pas ya.';
+                warna = 'bg-blue-50 text-blue-800';
+            } else if (totalSkor >= 50) {
+                pesan = '😊 Dia menyukaimu dan peduli, tapi masih butuh waktu untuk lebih terbuka dan memperhatikanmu lebih dalam. Saling berkomunikasi adalah kuncinya!';
+                warna = 'bg-yellow-50 text-yellow-800';
+            } else {
+                pesan = '💔 Hati-hati ya... Rasanya dia belum benar-benar menghargaimu sepenuhnya. Pikirkan baik-baik apakah kamu pantas mendapatkan perlakuan yang lebih baik?';
+                warna = 'bg-red-50 text-red-800';
+            }
+
+            pesanHasil.textContent = pesan;
+            pesanHasil.className = `p-4 rounded-xl mb-6 text-sm ${warna}`;
+        }
+
+        // Fungsi ulangi tes
+        function ulangiTes() {
+            totalSkor = 0;
+            jawabanTerpilih = {};
+            bagianPertanyaan.classList.remove('hidden');
+            bagianHasil.classList.add('hidden');
+            // Hapus tanda terpilih
+            document.querySelectorAll('.pilihan').forEach(p => p.classList.remove('terpilih'));
+            window.scrollTo({top:0, behavior:'smooth'});
+        }
+    </script>
+</body>
+</html>
